@@ -41,7 +41,9 @@ const App = () => {
 
             // Chama a API do servidor Node.js para obter a distância
             const apiKey = "AIzaSyAkKlLCRRCfBiGWl0cct-xfZcCBFbEpZT0";
-            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${cepLoja}&destinations=${cepCliente}&key=${apiKey}`;
+            const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
+            const apiUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${cepLoja}&destinations=${cepCliente}&key=${apiKey}`;
+            const url = corsAnywhereUrl + apiUrl;
             try {
               const response = await axios.get(url);
               console.log(response)

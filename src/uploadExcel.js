@@ -40,12 +40,15 @@ const App = () => {
             const cepCliente = row[12]; // Coluna do CEP do Cliente
 
             // Chama a API do servidor Node.js para obter a distância
-            const url = `https://calcula.onrender.com/api/maps/api/distancematrix/json?origins=${cepLoja}&destinations=${cepCliente}`;
+            const apiKey = "AIzaSyAkKlLCRRCfBiGWl0cct-xfZcCBFbEpZT0";
+            const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${cepLoja}&destinations=${cepCliente}&key=${apiKey}`;
             try {
               const response = await axios.get(url);
+              console.log(response)
               const distance = response.data.rows[0].elements[0].distance.text;
               row.push(distance);
             } catch (error) {
+              console.log(error)
               row.push("Erro ao calcular a distância");
             }
 
